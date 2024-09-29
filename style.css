@@ -1,0 +1,92 @@
+body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2e2e2e;
+    background-image: url('https://via.placeholder.com/1920x1080/2e2e2e/444?text=+');
+    background-size: cover;
+    color: #cccccc;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.banana-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#banana {
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#banana:active {
+    transform: scale(0.9);
+}
+
+h1 {
+    color: #ffd700;
+}
+
+p {
+    font-size: 20px;
+    color: #cccccc;
+}
+
+.task-bar {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 20px;
+    background-color: #76c7c0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #3e3e3e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #cccccc;
+}
+
+#upgrade-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #76c7c0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}

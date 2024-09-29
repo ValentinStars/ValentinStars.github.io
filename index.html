@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Банан кликер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Банан кликер</h1>
+        <div class="banana-container">
+            <img src="banana.png" alt="Банан" id="banana">
+        </div>
+        <p>Клики: <span id="click-count">0</span></p>
+        <div class="task-bar">
+            <p>Уровень: <span id="level">1</span></p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="upgrade-modal">
+        <div class="modal-content">
+            <h2>Улучшение!</h2>
+            <p>Ваш клик теперь добавляет +1!</p>
+            <button id="upgrade-button">ОК</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
