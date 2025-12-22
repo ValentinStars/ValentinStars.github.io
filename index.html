@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - amelin@MacBookM4</title>
+    <style>
+        :root {
+            --bg-color: #1e1e1e;
+            --term-bg: #171717;   
+            --term-header: #2d2d2d;
+            --text-color: #f1f1f1; 
+            --text-muted: #808080;
+            --user-color: #34c759; 
+            --path-color: #5ac8fa; 
+            --font-stack: 'Menlo', 'Monaco', 'Courier New', monospace;
+            --shadow: 0 22px 70px 4px rgba(0,0,0,0.56);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-stack);
+            overflow: hidden;
+        }
+
+        .window {
+            width: 700px;
+            max-width: 90%;
+            background-color: var(--term-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            opacity: 0; 
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .window-header {
+            background-color: var(--term-header);
+            height: 28px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            border-bottom: 1px solid #000;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close { background-color: #ff5f56; }
+        .btn-minimize { background-color: #ffbd2e; }
+        .btn-expand { background-color: #27c93f; }
+
+        .window-title {
+            flex-grow: 1;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            margin-right: 52px;
+            font-weight: 500;
+        }
+
+        .terminal-content {
+            padding: 10px 14px;
+            color: var(--text-color);
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .prompt-user { color: var(--user-color); font-weight: bold; }
+        .prompt-path { color: var(--path-color); font-weight: bold; }
+        .prompt-symbol { color: var(--text-color); }
+        
+        /* Курсор */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #aeafad;
+            vertical-align: middle;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        .cursor.typing {
+            animation: none;
+            opacity: 1;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #term1 {
+            opacity: 1; 
+            z-index: 1;
+        }
+
+        #term2 {
+            z-index: 2;
+            width: 600px; 
+            height: 350px;
+        }
+
+        .hidden { display: none; }
+        
+    </style>
+</head>
+<body>
+
+    <div id="term1" class="window">
+        <div class="window-header">
+            <div class="buttons">
+                <div class="btn btn-close"></div>
+                <div class="btn btn-minimize"></div>
+                <div class="btn btn-expand"></div>
+            </div>
+            <div class="window-title">amelin — -zsh — 80x24</div>
+        </div>
+        <div class="terminal-content" id="content1">
+            </div>
+    </div>
+
+    <div id="term2" class="window">
+        <div class="window-header">
+            <div class="buttons">
+                <div class="btn btn-close"></div>
+                <div class="btn btn-minimize"></div>
+                <div class="btn btn-expand"></div>
+            </div>
+            <div class="window-title">otkritka.sh</div>
+        </div>
+        <div class="terminal-content" id="content2">
+            </div>
+    </div>
+
+    <script>
+        // Конфигурация
+        const PROMPT_BASE = `<span class="prompt-user">amelin@MacBookM4</span> <span class="prompt-path">~</span><span class="prompt-symbol">$</span> `;
+        const PROMPT_FOLDER = `<span class="prompt-user">amelin@MacBookM4</span> <span class="prompt-path">~/pozdrav_2025</span><span class="prompt-symbol">$</span> `;
+        
+        const term1Content = document.getElementById('content1');
+        const term2 = document.getElementById('term2');
+        const term2Content = document.getElementById('content2');
+
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function typeText(container, text, speed = 50) {
+            let cursor = container.querySelector('.cursor');
+            if(cursor) cursor.remove();
+
+            for (let char of text) {
+                container.insertAdjacentText('beforeend', char);
+                if(!cursor) {
+                    cursor = document.createElement('span');
+                    cursor.className = 'cursor typing';
+                }
+                container.appendChild(cursor);
+                
+                const randomDelay = speed + (Math.random() * 50 - 25); 
+                await sleep(randomDelay);
+                
+                cursor.remove();
+            }
+            
+            cursor.className = 'cursor';
+            container.appendChild(cursor);
+        }
+
+        function addPrompt(container, promptHTML) {
+            let cursor = container.querySelector('.cursor');
+            if(cursor) cursor.remove();
+
+            const line = document.createElement('div');
+            line.innerHTML = promptHTML + '<span class="cursor"></span>';
+            container.appendChild(line);
+            
+            container.scrollTop = container.scrollHeight;
+            return line;
+        }
+
+        function removeCursor(container) {
+            const cursors = container.querySelectorAll('.cursor');
+            cursors.forEach(c => c.remove());
+        }
+
+        async function runScenario() {
+            await sleep(800);
+            addPrompt(term1Content, PROMPT_BASE);
+            await sleep(1000);
+
+            let activeLine = term1Content.lastElementChild;
+            removeCursor(term1Content); 
+            activeLine.innerHTML = PROMPT_BASE; 
+            
+            await typeText(activeLine, "cd pozdrav_2025", 70);
+            await sleep(400); 
+
+            removeCursor(term1Content);
+            addPrompt(term1Content, PROMPT_FOLDER);
+            await sleep(800);
+
+            activeLine = term1Content.lastElementChild;
+            removeCursor(term1Content);
+            activeLine.innerHTML = PROMPT_FOLDER;
+            
+            await typeText(activeLine, "./otkritka.sh", 70);
+            await sleep(600);
+            
+            removeCursor(term1Content);
+            const outputLine = document.createElement('div');
+            outputLine.textContent = "/bin/terminal --screen 800x600 ";
+            outputLine.style.color = "#808080"; 
+            outputLine.style.marginTop = "4px";
+            term1Content.appendChild(outputLine);
+            await sleep(1000);
+
+            showSecondWindow();
+        }
+
+        async function showSecondWindow() {
+            const rect = document.getElementById('term1').getBoundingClientRect();
+            term2.style.left = (rect.left + 50) + 'px';
+            term2.style.top = (rect.top + 50) + 'px';
+            
+            term2.style.opacity = '1';
+            
+            await sleep(1000); 
+
+            const lines = [
+                "Дорогой, Илья.",
+                "Сегодня тебе исполняется 16 лет, и я тебя с этим поздравляю.",
+                "Расти большой, не будь лапшой, пусть всё в жизни будет хорошо.",
+                "Пусть появляются новые кубки, СОЧи будут сданы,",
+                "а долги по учёбе закрыты.",
+                "",
+                "Поздравляю!"
+            ];
+
+            const t2 = term2Content;
+            
+            const startLine = document.createElement('div');
+            startLine.innerHTML = '<span class="cursor"></span>';
+            t2.appendChild(startLine);
+
+            for (let i = 0; i < lines.length; i++) {
+                const lineText = lines[i];
+                let currentLineDiv = t2.lastElementChild;
+                
+                if (lineText.length > 0) {
+                    await typeText(currentLineDiv, lineText, 50);
+                } else {
+                    await sleep(300);
+                    removeCursor(currentLineDiv);
+                }
+
+                await sleep(400); 
+
+                if (i < lines.length) { 
+                    removeCursor(currentLineDiv);
+                    const newLineDiv = document.createElement('div');
+                    newLineDiv.innerHTML = '<span class="cursor"></span>';
+                    if(i === lines.length - 2) newLineDiv.style.marginTop = "10px";
+                    
+                    t2.appendChild(newLineDiv);
+                    t2.scrollTop = t2.scrollHeight;
+                }
+            }
+            
+        }
+
+        window.onload = runScenario;
+        // Потрачено: 2 часа кодинга страницы, 
+        // 30 минут засовывания страницы в бота 
+        // и 1 час выжидания 00:00 что бы закинуть бота илье 
+    </script>
+</body>
+</html>
