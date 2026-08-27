@@ -1,0 +1,50 @@
+{
+  "project": "VSTHunterKernel",
+  "author": "Valentin Stars",
+  "website": "https://vstbio.t.me",
+  "github_repo": "https://github.com/ValentinStars/VSTHunterKernel",
+  "latest": {
+    "version": "v2.0-Alpha4",
+    "version_code": 400,
+    "version_name": "GIGA Alpha4 Edition",
+    "release_date": "2026-08-27",
+    "channel": "alpha",
+    "target_soc": "Exynos 9611 (universal9611)",
+    "supported_devices": [
+      "a51",
+      "a515f",
+      "m21",
+      "m31",
+      "m31s",
+      "f41",
+      "gta4xl",
+      "gta4xlwifi"
+    ],
+    "supported_android_versions": [
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "zip_name": "VSTHunterKernel-A51-NetHunter-VST-Alpha4.zip",
+    "download_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/VSTHunterKernel-A51-NetHunter-VST-Alpha4.zip",
+    "direct_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/VSTHunterKernel-A51-NetHunter-VST-Alpha4.zip",
+    "sha256": "73083f96c4dcdfe5ca25047848c584d07c9847fbe675374ae53e29aa3c03885f",
+    "release_page": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+    "changelog": [
+      "🛡️ Emergency Recovery Key Combo: Vol+ & Vol- 4s hold forces hardware recovery reboot",
+      "⚡ Screen-on Fast Charging: 2.1A / 2.4A unrestricted high-speed current while display is on",
+      "🧠 Multi-Gen LRU (MGLRU): CONFIG_LRU_GEN=y for lag-free RAM management and page reclamation",
+      "🎮 Mali-G72 GPU 10ms frame pacing: DEFAULT_JS_CTX_TIMESLICE_NS=10000000 for butter smooth UI",
+      "🌙 Kernel Wakelock Blocker: Silently drops ssp_wake_lock & sec-battery-monitor in deep sleep",
+      "🐳 Docker / Waydroid bridge & FQ_Codel net scheduler + TCP BBR congestion control",
+      "🔐 Samsung SSS hardware crypto engine (CONFIG_CRYPTO_DEV_S5P=y) active",
+      "📀 DriveDroid SCSI CD-ROM emulation, BadUSB HID & wireless injection active"
+    ]
+  },
+  "channels": {
+    "alpha": "https://valentinstars.github.io/vstnh/update.json",
+    "fkm": "https://valentinstars.github.io/vstnh/fkm.json",
+    "magisk": "https://valentinstars.github.io/vstnh/magisk.json"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "name": "VSTHunter NetHunter Arsenal & System Modules",
+  "version": "v2.0-Alpha4",
+  "version_code": 400,
+  "author": "Valentin Stars",
+  "modules": [
+    {
+      "id": "vst-nethunter-sd-fix",
+      "name": "VST NetHunter MicroSD & System AutoFix",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/00_VST_NetHunter_SD_AutoFix.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "Permanent fix for NetHunter rootfs on MicroSD with Vold fsck bypass & multi-launchers."
+    },
+    {
+      "id": "vst-badusb-arsenal",
+      "name": "VST BadUSB & HID Pentest Arsenal",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/01_VST_BadUSB_NetHunter_Arsenal.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "ConfigFS BadUSB & HID Rubber Ducky payload injector."
+    },
+    {
+      "id": "vst-wireguard-toolkit",
+      "name": "VST WireGuard NEON VPN Toolkit",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/02_VST_WireGuard_Toolkit.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "Kernel-level WireGuard with ARM64 NEON acceleration."
+    },
+    {
+      "id": "vst-wireless-pentest",
+      "name": "VST Wireless Pentest & Wi-Fi Firmware Arsenal",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/03_VST_Wireless_Pentest_Arsenal.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "Firmware and tools for Realtek, Atheros, Mediatek Wi-Fi cards."
+    },
+    {
+      "id": "vst-sdr-radio",
+      "name": "VST SDR & Radio Hacker Toolkit",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/04_VST_SDR_Radio_Hacker.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "RTL-SDR, HackRF One, and Airspy radio tools."
+    },
+    {
+      "id": "vst-can-hardware",
+      "name": "VST Hardware Hacking & SocketCAN Toolkit",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/05_VST_Hardware_Hacking_CAN.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "SLCAN kernel driver, CAN bus diagnostic and car hacking toolkit."
+    },
+    {
+      "id": "vst-hakirfon-props",
+      "name": "VST hakirfon Edition System Properties",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/06_VST_hakirfon_Edition_SystemProp.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "System properties, branding, and kernel tuning."
+    },
+    {
+      "id": "vst-otg-power",
+      "name": "VST USB OTG Power Switcher CLI",
+      "version": "v2.0-Alpha4",
+      "versionCode": 400,
+      "zip_url": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/07_VST_USB_OTG_Power_Switcher.zip",
+      "changelog": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4",
+      "description": "CLI control for OTG VBUS reverse-power delivery."
+    }
+  ]
+}

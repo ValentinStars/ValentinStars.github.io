@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ VSTHunterKernel — Официальный Канал Обновления</title>
+  <meta name="description" content="Канал обновления и релизов ядра VSTHunterKernel для Samsung Galaxy A51 (SM-A515F / universal9611) & NetHunter Arsenal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0e14;
+      --bg-secondary: #121824;
+      --bg-card: rgba(18, 24, 36, 0.75);
+      --accent-cyan: #00f0ff;
+      --accent-green: #00ff88;
+      --accent-red: #ff3366;
+      --accent-purple: #9d4edd;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --border-color: rgba(0, 240, 255, 0.2);
+      --border-glow: 0 0 15px rgba(0, 240, 255, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 255, 136, 0.05) 0%, transparent 40%);
+    }
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .badge-release {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.8rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .author-tag {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .author-tag a {
+      color: var(--accent-green);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .author-tag a:hover {
+      text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--border-glow);
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .ota-url-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .ota-url-box code {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .btn-copy {
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-copy:hover {
+      background: var(--accent-cyan);
+      color: #000;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, #0077b6 100%);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+      margin-top: 0.5rem;
+    }
+
+    .btn-download:hover {
+      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.5);
+      transform: scale(1.02);
+    }
+
+    .features-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .features-list li {
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .features-list li::before {
+      content: "✔";
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .modules-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .modules-table th, .modules-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .modules-table th {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      background: rgba(0, 240, 255, 0.05);
+    }
+
+    .modules-table td a {
+      color: var(--accent-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .modules-table td a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-green);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge-release">⚡ Official Update Channel & Releases</div>
+      <h1>VSTHunterKernel</h1>
+      <p class="subtitle">Передовое кастомное ядро NetHunter & Pentest Arsenal для <strong>Samsung Galaxy A51 (SM-A515F / universal9611)</strong></p>
+      <div class="author-tag">Разработчик: <a href="https://vstbio.t.me" target="_blank">Valentin Stars (@vstbio)</a> • Стандарт: <code>#STOP_SHITCODING</code></div>
+    </header>
+
+    <div class="grid-cards">
+      <!-- Latest Kernel Card -->
+      <div class="card">
+        <div class="card-title">🔥 Актуальный релиз: v2.0-Alpha4 (GIGA)</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Стабильная гига-сборка со всеми аппаратными драйверами и оптимизациями.</p>
+        <ul class="features-list">
+          <li><strong>Emergency Recovery Combo:</strong> Зажатие Vol+ & Vol- на 4с</li>
+          <li><strong>Screen-On Fast Charge:</strong> Зарядка до 2.1А с экраном</li>
+          <li><strong>MGLRU:</strong> Multi-Gen LRU для памяти без лагов</li>
+          <li><strong>Mali-G72 GPU:</strong> Квант времени 10мс (плавный UI)</li>
+          <li><strong>Samsung SSS Crypto:</strong> Аппаратное AES/SHA</li>
+          <li><strong>Wakelock Blocker:</strong> Энергосбережение в сне</li>
+          <li><strong>Docker & Waydroid:</strong> Bridge, FQ_Codel, BBR</li>
+        </ul>
+        <a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/VSTHunterKernel-A51-NetHunter-VST-Alpha4.zip" class="btn-download">
+          ⚡ Скачать Ядро (Alpha4 Zip)
+        </a>
+      </div>
+
+      <!-- OTA Update Channels Card -->
+      <div class="card">
+        <div class="card-title">📡 Каналы Обновления (OTA URL)</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Вставьте один из URL в ваш Kernel Manager или менеджер модулей Magisk:</p>
+        
+        <div style="margin-top: 1rem;">
+          <div style="font-size: 0.82rem; font-weight: 600; color: #fff;">1. Universal Kernel OTA Manifest:</div>
+          <div class="ota-url-box">
+            <code id="url-update">https://valentinstars.github.io/vstnh/update.json</code>
+            <button class="btn-copy" onclick="copyText('url-update')">Копировать</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.82rem; font-weight: 600; color: #fff;">2. Franco Kernel Manager (FKM Hub):</div>
+          <div class="ota-url-box">
+            <code id="url-fkm">https://valentinstars.github.io/vstnh/fkm.json</code>
+            <button class="btn-copy" onclick="copyText('url-fkm')">Копировать</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.82rem; font-weight: 600; color: #fff;">3. Magisk Modules OTA Hub:</div>
+          <div class="ota-url-box">
+            <code id="url-magisk">https://valentinstars.github.io/vstnh/magisk.json</code>
+            <button class="btn-copy" onclick="copyText('url-magisk')">Копировать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Magisk Modules Section -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <div class="card-title">📦 Комплект Модулей Magisk (v2.0-Alpha4)</div>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Специализированные модули для работы с MicroSD, BadUSB, Wi-Fi инжекцией и SDR:</p>
+      
+      <div style="overflow-x: auto;">
+        <table class="modules-table">
+          <thead>
+            <tr>
+              <th>ID / Название</th>
+              <th>Версия</th>
+              <th>Назначение</th>
+              <th>Скачать</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>00_VST_NetHunter_SD_AutoFix</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>Авто-монтирование rootfs с MicroSD, обход fsck Vold</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/00_VST_NetHunter_SD_AutoFix.zip">00_SD_Fix.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>01_VST_BadUSB_NetHunter_Arsenal</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>ConfigFS BadUSB & HID Rubber Ducky /dev/hidg0</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/01_VST_BadUSB_NetHunter_Arsenal.zip">01_BadUSB.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>02_VST_WireGuard_Toolkit</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>WireGuard с ARM64 NEON аппаратным шифрованием</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/02_VST_WireGuard_Toolkit.zip">02_WireGuard.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>03_VST_Wireless_Pentest_Arsenal</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>Прошивки и драйверы RTL8812AU, Atheros, Mediatek</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/03_VST_Wireless_Pentest_Arsenal.zip">03_Wireless.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>04_VST_SDR_Radio_Hacker</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>Инструменты для RTL-SDR, HackRF One, Airspy</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/04_VST_SDR_Radio_Hacker.zip">04_SDR.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>05_VST_Hardware_Hacking_CAN</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>Драйвер SLCAN, SocketCAN диагностика шины авто</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/05_VST_Hardware_Hacking_CAN.zip">05_CAN.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>06_VST_hakirfon_Edition_SystemProp</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>Системные твики hakirfon Edition & брендинг</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/06_VST_hakirfon_Edition_SystemProp.zip">06_Hakirfon.zip</a></td>
+            </tr>
+            <tr>
+              <td><strong>07_VST_USB_OTG_Power_Switcher</strong></td>
+              <td><code>v2.0-Alpha4</code></td>
+              <td>CLI-утилита <code>vst-otg</code> управления питанием порта</td>
+              <td><a href="https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/07_VST_USB_OTG_Power_Switcher.zip">07_OTG.zip</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Supported Devices -->
+    <div class="card">
+      <div class="card-title">📱 Совместимость и Поддерживаемые Устройства</div>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+        Ядро собрано для платформы <strong>Samsung Exynos 9611 (universal9611)</strong> на компиляторе Neutron Clang 18 LLVM/LLD.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Samsung Galaxy A51 (SM-A515F) [Основное]</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Galaxy M21 (SM-M215F)</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Galaxy M31 (SM-M315F)</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Galaxy M31s (SM-M317F)</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Galaxy F41 (SM-F415F)</span>
+        <span style="background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Galaxy Tab S6 Lite (SM-P610 / SM-P615)</span>
+      </div>
+    </div>
+
+    <footer>
+      <p>⚡ VSTHunterKernel Project • Разработано <a href="https://vstbio.t.me" style="color: var(--accent-cyan); text-decoration: none;">Valentin Stars</a> • <a href="https://github.com/ValentinStars/VSTHunterKernel" style="color: var(--accent-green); text-decoration: none;">GitHub Исходники</a></p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast">Скопировано в буфер обмена!</div>
+
+  <script>
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

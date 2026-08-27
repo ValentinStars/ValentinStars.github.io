@@ -1,0 +1,11 @@
+{
+  "version": "v2.0-Alpha4",
+  "version_code": 400,
+  "edition": "GIGA Edition",
+  "tag": "v2.0-Alpha4",
+  "build_date": "2026-08-27",
+  "target_device": "Samsung Galaxy A51 (SM-A515F / universal9611)",
+  "kernel_zip": "https://github.com/ValentinStars/VSTHunterKernel/releases/download/v2.0-Alpha4/VSTHunterKernel-A51-NetHunter-VST-Alpha4.zip",
+  "sha256": "73083f96c4dcdfe5ca25047848c584d07c9847fbe675374ae53e29aa3c03885f",
+  "github_release": "https://github.com/ValentinStars/VSTHunterKernel/releases/tag/v2.0-Alpha4"
+}
